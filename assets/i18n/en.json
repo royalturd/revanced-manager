@@ -1,4 +1,5 @@
 {
+    "okButton": "OK",
     "main": {
         "dashboardTab": "Dashboard",
         "patcherTab": "Patcher",
@@ -31,7 +32,7 @@
     },
     "patcherView": {
         "widgetTitle": "Patcher",
-        "fabButton": "Patch"
+        "patchButton": "Patch"
     },
     "appSelectorCard": {
         "widgetTitle": "Select application",
@@ -50,17 +51,23 @@
     },
     "appSelectorView": {
         "searchBarHint": "Search applications",
-        "fabButton": "Storage",
+        "storageButton": "Storage",
         "errorMessage": "Unable to use selected application."
     },
     "patchesSelectorView": {
         "searchBarHint": "Search patches",
         "doneButton": "Done"
     },
+    "patchItem": {
+        "unsupportedWarningButton": "Unsupported version",
+        "alertDialogTitle": "Warning",
+        "alertDialogText": "Selecting this patch may or may not result in patching errors.\n\nApp version: {packageVersion}\nCurrent supported versions:\n{supportedVersions}"
+    },
     "installerView": {
         "widgetTitle": "Installer",
         "installButton": "Install",
         "openButton": "Open",
+        "shareButton": "Share file",
         "notificationTitle": "ReVanced Manager is patching",
         "notificationText": "Tap to return to the installer"
     },

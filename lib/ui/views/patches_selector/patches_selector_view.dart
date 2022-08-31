@@ -57,9 +57,14 @@ class _PatchesSelectorViewState extends State<PatchesSelectorView> {
                               .getQueriedPatches(_query)
                               .map((patch) => PatchItem(
                                     name: patch.name,
-                                    simpleName: patch.simpleName,
+                                    simpleName: patch.getSimpleName(),
                                     version: patch.version,
                                     description: patch.description,
+                                    packageVersion: model.getAppVersion(),
+                                    supportedPackageVersions:
+                                        model.getSupportedVersions(patch),
+                                    isUnsupported:
+                                        !model.isPatchSupported(patch),
                                     isSelected: model.isSelected(patch),
                                     onChanged: (value) =>
                                         model.selectPatch(patch, value),
