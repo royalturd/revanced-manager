@@ -10,6 +10,8 @@
         "updatesSubtitle": "Updates",
         "patchedSubtitle": "Patched Applications",
         "updatesAvailable": "Updates Available",
+        "noUpdates": "No updates available",
+        "noInstallations": "No patched apps installed",
         "installed": "Installed",
         "notificationTitle": "ReVanced Manager was updated!",
         "notificationText": "Tap to open the app",
@@ -91,6 +93,7 @@
         "widgetTitle": "Is your device rooted?",
         "widgetDescription": "Don't know what this means or prefer to use non-root version? Just click on the button below!",
         "grantPermission": "Grant Root Permission",
-        "grantedPermission": "Magisk permission granted: {isRooted}"
+        "grantedPermission": "Magisk permission granted: {isRooted}",
+        "nonRootButton": "Nonroot"
     }
 }
