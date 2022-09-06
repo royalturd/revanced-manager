@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:revanced_manager/constants.dart';
-import 'package:revanced_manager/theme.dart';
-import 'package:revanced_manager/ui/views/contributors/contributors_view.dart';
 import 'package:revanced_manager/ui/views/settings/settings_viewmodel.dart';
 import 'package:revanced_manager/ui/widgets/settingsView/about_widget.dart';
 import 'package:revanced_manager/ui/widgets/settingsView/custom_switch_tile.dart';
@@ -12,9 +9,7 @@ import 'package:revanced_manager/ui/widgets/settingsView/settings_section.dart';
 import 'package:revanced_manager/ui/widgets/settingsView/social_media_widget.dart';
 import 'package:revanced_manager/ui/widgets/settingsView/sources_widget.dart';
 import 'package:revanced_manager/ui/widgets/shared/custom_sliver_app_bar.dart';
-import 'package:revanced_manager/ui/widgets/shared/open_container_wrapper.dart';
 import 'package:stacked/stacked.dart';
-import 'package:stacked_themes/stacked_themes.dart';
 
 class SettingsView extends StatelessWidget {
   final TextEditingController organizationController = TextEditingController();
@@ -37,8 +32,7 @@ class SettingsView extends StatelessWidget {
                 child: Text(
                   '',
                   style: GoogleFonts.inter(
-                    color: Theme.of(context).textTheme.headline5!.color,
-                    fontWeight: FontWeight.w500,
+                    color: Theme.of(context).textTheme.headline6!.color,
                   ),
                 ),
               ),
@@ -56,18 +50,39 @@ class SettingsView extends StatelessWidget {
                       children: <Widget>[
                         CustomSwitchTile(
                           title: I18nText(
-                            'settingsView.themeLabel',
-                            child: Text(
+                            'settingsView.darkThemeLabel',
+                            child: const Text(
                               '',
-                              style: kSettingItemTextStyle,
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w500,
+                              ),
                             ),
                           ),
-                          subtitle: I18nText('settingsView.themeHint'),
-                          value: isDark,
-                          onTap: (value) {
-                            isDark = value;
-                            getThemeManager(context).toggleDarkLightTheme();
-                          },
+                          subtitle: I18nText('settingsView.darkThemeHint'),
+                          value: model.getDarkThemeStatus(),
+                          onTap: (value) => model.setUseDarkTheme(
+                            context,
+                            value,
+                          ),
+                        ),
+                        CustomSwitchTile(
+                          title: I18nText(
+                            'settingsView.dynamicThemeLabel',
+                            child: const Text(
+                              '',
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ),
+                          subtitle: I18nText('settingsView.dynamicThemeHint'),
+                          value: model.getDynamicThemeStatus(),
+                          onTap: (value) => model.setUseDynamicTheme(
+                            context,
+                            value,
+                          ),
                         ),
                       ],
                     ),
@@ -102,9 +117,12 @@ class SettingsView extends StatelessWidget {
                           contentPadding: EdgeInsets.zero,
                           title: I18nText(
                             'settingsView.rootModeLabel',
-                            child: Text(
+                            child: const Text(
                               '',
-                              style: kSettingItemTextStyle,
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w500,
+                              ),
                             ),
                           ),
                           subtitle: I18nText('settingsView.rootModeHint'),
@@ -123,17 +141,20 @@ class SettingsView extends StatelessWidget {
                     SettingsSection(
                       title: 'settingsView.teamSectionTitle',
                       children: <Widget>[
-                        OpenContainerWrapper(
-                          openBuilder: (_, __) => const ContributorsView(),
-                          closedBuilder: (_, openContainer) => ListTile(
-                            contentPadding: EdgeInsets.zero,
-                            title: I18nText(
-                              'settingsView.contributorsLabel',
-                              child: Text('', style: kSettingItemTextStyle),
+                        ListTile(
+                          contentPadding: EdgeInsets.zero,
+                          title: I18nText(
+                            'settingsView.contributorsLabel',
+                            child: const Text(
+                              '',
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w500,
+                              ),
                             ),
-                            subtitle: I18nText('settingsView.contributorsHint'),
-                            onTap: openContainer,
                           ),
+                          subtitle: I18nText('settingsView.contributorsHint'),
+                          onTap: () => model.navigateToContributors(),
                         ),
                         const SocialMediaWidget(),
                       ],
